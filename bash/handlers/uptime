@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "Uptime:"
+sleep 1s;
+uptime
+
+exit 0
