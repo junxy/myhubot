@@ -1,0 +1,26 @@
+#!/bin/bash
+# Author: xuyijun
+
+mysqlu='root'
+mysqlp=''
+mysqlh='127.0.0.1'
+db=''
+
+unamestr=`uname`
+# 判断环境为 macOS，可作为开发环境，设置不同配置
+if [[ "$unamestr" == 'Darwin' ]]; then
+    mysqlu='root'
+    mysqlp=''
+    mysqlh='127.0.0.1'
+    db="sakila"
+fi
+
+sql="select count(0) from film;"
+echo "正在获取..数据表 film 的记录数量："
+
+# ref: https://www.shellhacks.com/mysql-run-query-bash-script-linux-command-line/
+sleep 1s;
+# mysql "$db" -u $mysqlu -p$mysqlp -h$mysqlh -e "$sql"
+mysql "$db" -u $mysqlu -h$mysqlh -e "$sql"
+
+exit 0
